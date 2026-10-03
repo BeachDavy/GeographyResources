@@ -1,40 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home</title>
+<head>
+  <meta charset="UTF-8">
+  <title>Play Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="play-body">
+  <header class="play-header">
+    <a href="index.html" class="back-btn">← Back to games</a>
+    <span id="game-title">Loading...</span>
+  </header>
 
-    <script src="config/main.js" type="module"></script>
-    <style>
-      body {
-        margin: 0;
-        padding: 0;
-      }
+  <main class="play-main">
+    <div class="play-frame-wrap">
+      <iframe id="game-frame" src="" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </main>
 
-      iframe {
-        width: 100%;
-        height: 100vh;
-        border: none;
-      }
-    </style>
-  </head>
-  <body>
-    <iframe id="gameFrame"></iframe>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const game = params.get('game');
 
-    <script>
-      var serverUrl1 = "https://parcoil-assets.onrender.com";
-      const queryString = window.location.search;
-      const urlParams = new URLSearchParams(queryString);
-      const gameUrl = urlParams.get("gameurl");
+    const games = {
+      "1v1space": "1v1space",
+      "100ng": "100ng",
+      "2048": "2048",
+      "adrenalinechallenge": "adrenalinechallenge",
+      "among-us": "among-us",
+      "awesometanks2": "awesometanks2",
+      "basketball-stars": "basketball-stars",
+      "cookie-clicker": "cookie-clicker",
+      "crossyroad": "crossyroad",
+      "cubefield": "cubefield",
+      "death-run-3d": "death-run-3d",
+      "DogeMiner": "DogeMiner",
+      "geodash": "geodash",
+      "minecraft-classic": "minecraft-classic",
+      "paperio2": "paperio2",
+      "plants-vs-zombies-1": "plants-vs-zombies-1",
+      "precision-client": "precision-client",
+      "retro-bowl": "retro-bowl",
+      "rooftop-snipers": "rooftop-snipers",
+      "run-3": "run-3",
+      "runner": "runner",
+      "sandboxels": "sandboxels",
+      "slitherio": "slitherio",
+      "slope": "slope",
+      "snowbattle": "snowbattle",
+      "soccer-skills": "soccer-skills",
+      "stickwar": "stickwar",
+      "subway-surfers-ny": "subway-surfers-ny",
+      "thebattle": "thebattle"
+    };
 
-      if (!gameUrl) {
-        alert("Game URL not provided!");
-        window.location.href = "/"; // Redirect to homepage if game URL is missing
-      } else {
-        const embedUrl = `${serverUrl1}/${gameUrl}`;
-        document.getElementById("gameFrame").src = embedUrl;
-      }
-    </script>
-  </body>
+    const titles = {
+      "1v1space": "1v1 Space",
+      "100ng": "100ng",
+      "2048": "2048",
+      "adrenalinechallenge": "Adrenaline Challenge",
+      "among-us": "Among Us",
+      "awesometanks2": "Awesome Tanks 2",
+      "basketball-stars": "Basketball Stars",
+      "cookie-clicker": "Cookie Clicker",
+      "crossyroad": "Crossy Road",
+      "cubefield": "Cubefield",
+      "death-run-3d": "Death Run 3D",
+      "DogeMiner": "Doge Miner",
+      "geodash": "GeoDash",
+      "minecraft-classic": "Minecraft Classic",
+      "paperio2": "Paper.io 2",
+      "plants-vs-zombies-1": "Plants vs Zombies 1",
+      "precision-client": "Precision Client",
+      "retro-bowl": "Retro Bowl",
+      "rooftop-snipers": "Rooftop Snipers",
+      "run-3": "Run 3",
+      "runner": "Runner",
+      "sandboxels": "Sandboxels",
+      "slitherio": "Slither.io",
+      "slope": "Slope",
+      "snowbattle": "Snow Battle",
+      "soccer-skills": "Soccer Skills",
+      "stickwar": "Stick War",
+      "subway-surfers-ny": "Subway Surfers NY",
+      "thebattle": "The Battle"
+    };
+
+    const titleEl = document.getElementById('game-title');
+    const frameEl = document.getElementById('game-frame');
+
+    if (game && games[game]) {
+      titleEl.textContent = titles[game] || game;
+      frameEl.src = games[game] + "/index.html";
+    } else {
+      titleEl.textContent = "Game not found";
+    }
+  </script>
+</body>
 </html>
+
