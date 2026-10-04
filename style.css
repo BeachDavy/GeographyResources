@@ -2,7 +2,7 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: #0d1b2a; /* dark blue */
+  background: #0d1b2a;
   color: #e0e0e0;
 }
 
@@ -15,7 +15,7 @@ body {
 /* SIDE MENU */
 .side-menu {
   width: 240px;
-  background: #1b263b; /* darker blue */
+  background: #1b263b;
   border-right: 3px solid #415a77;
   padding: 20px;
   overflow-y: auto;
@@ -44,23 +44,10 @@ body {
   font-weight: 600;
   color: #fff;
   transition: background 0.15s;
-
-  /* NEW: icon layout */
-  display: flex;
-  align-items: center;
-  gap: 10px;
 }
 
 .side-menu li:hover {
   background: #778da9;
-}
-
-/* NEW: sidebar icon */
-.sidebar-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 6px;
-  object-fit: cover;
 }
 
 /* MAIN CONTENT */
