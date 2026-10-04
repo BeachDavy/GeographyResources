@@ -44,10 +44,23 @@ body {
   font-weight: 600;
   color: #fff;
   transition: background 0.15s;
+
+  /* NEW: icon layout */
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .side-menu li:hover {
   background: #778da9;
+}
+
+/* NEW: sidebar icon */
+.sidebar-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  object-fit: cover;
 }
 
 /* MAIN CONTENT */
@@ -159,4 +172,3 @@ footer {
   height: 100%;
   border: none;
 }
-
