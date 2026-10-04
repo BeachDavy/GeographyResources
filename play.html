@@ -5,6 +5,7 @@
   <title>Play Game</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body class="play-body">
   <header class="play-header">
     <a href="index.html" class="back-btn">← Back to games</a>
@@ -21,58 +22,23 @@
     const params = new URLSearchParams(window.location.search);
     const game = params.get('game');
 
-    const games = {
-      "1v1space": "1v1space",
-      "100ng": "100ng",
-      "2048": "2048",
-      "adrenalinechallenge": "adrenalinechallenge",
-      "among-us": "among-us",
-      "awesometanks2": "awesometanks2",
-      "basketball-stars": "basketball-stars",
-      "cookie-clicker": "cookie-clicker",
-      "crossyroad": "crossyroad",
-      "cubefield": "cubefield",
-      "death-run-3d": "death-run-3d",
-      "DogeMiner": "DogeMiner",
-      "geodash": "geodash",
-      "minecraft-classic": "minecraft-classic",
-      "paperio2": "paperio2",
-      "plants-vs-zombies-1": "plants-vs-zombies-1",
-      "precision-client": "precision-client",
-      "retro-bowl": "retro-bowl",
-      "rooftop-snipers": "rooftop-snipers",
-      "run-3": "run-3",
-      "runner": "runner",
-      "sandboxels": "sandboxels",
-      "slitherio": "slitherio",
-      "slope": "slope",
-      "snowbattle": "snowbattle",
-      "soccer-skills": "soccer-skills",
-      "stickwar": "stickwar",
-      "subway-surfers-ny": "subway-surfers-ny",
-      "thebattle": "thebattle"
-    };
-
     const titles = {
       "1v1space": "1v1 Space",
       "100ng": "100ng",
-      "2048": "2048",
+      "DogeMiner": "Doge Miner",
       "adrenalinechallenge": "Adrenaline Challenge",
       "among-us": "Among Us",
       "awesometanks2": "Awesome Tanks 2",
-      "basketball-stars": "Basketball Stars",
       "cookie-clicker": "Cookie Clicker",
       "crossyroad": "Crossy Road",
       "cubefield": "Cubefield",
       "death-run-3d": "Death Run 3D",
-      "DogeMiner": "Doge Miner",
       "geodash": "GeoDash",
       "minecraft-classic": "Minecraft Classic",
       "paperio2": "Paper.io 2",
       "plants-vs-zombies-1": "Plants vs Zombies 1",
       "precision-client": "Precision Client",
       "retro-bowl": "Retro Bowl",
-      "rooftop-snipers": "Rooftop Snipers",
       "run-3": "Run 3",
       "runner": "Runner",
       "sandboxels": "Sandboxels",
@@ -88,13 +54,12 @@
     const titleEl = document.getElementById('game-title');
     const frameEl = document.getElementById('game-frame');
 
-    if (game && games[game]) {
-      titleEl.textContent = titles[game] || game;
-      frameEl.src = games[game] + "/index.html";
+    if (game && titles[game]) {
+      titleEl.textContent = titles[game];
+      frameEl.src = `games/${game}/index.html`;
     } else {
       titleEl.textContent = "Game not found";
     }
   </script>
 </body>
 </html>
-
