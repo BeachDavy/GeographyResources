@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7243495410782424"
+       crossorigin="anonymous"></script>
+
+  <meta charset="UTF-8">
+  <title>Play Game</title>
+</head>
+
+<body>
+<h1 id="game-title">Loading...</h1>
+
+<!-- AdSense Display Ad -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7243495410782424"
+     data-ad-slot="YOUR_SLOT_ID"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<iframe id="game-frame" width="100%" height="600px"></iframe>
+
+<script>
+  // Get ?g=foldername from URL
+  const params = new URLSearchParams(window.location.search);
+  const game = params.get("g");
+
+  if (game) {
+    document.getElementById("game-title").innerText = game.replace(/-/g, " ");
+    document.getElementById("game-frame").src = `/${game}/index.html`;
+  } else {
+    document.getElementById("game-title").innerText = "Game not found";
+  }
+</script>
+
+</body>
+</html>
