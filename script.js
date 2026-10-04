@@ -1,4 +1,3 @@
-// Games that match your real folders
 const games = [
   { name: "1v1 Space", folder: "1v1space" },
   { name: "100ng", folder: "100ng" },
@@ -30,39 +29,28 @@ const games = [
 
 // SIDEBAR
 const sideMenu = document.querySelector(".side-menu ul");
-if (sideMenu) {
-  games.forEach(game => {
-    const li = document.createElement("li");
-    li.textContent = game.name;
-    li.onclick = () => {
-      window.location.href = `play.html?game=${game.folder}`;
-    };
-    sideMenu.appendChild(li);
-  });
-}
+games.forEach(game => {
+  const li = document.createElement("li");
+  li.textContent = game.name;
+  li.onclick = () => window.location.href = `play.html?game=${game.folder}`;
+  sideMenu.appendChild(li);
+});
 
-// GAME GRID
+// GRID
 const grid = document.getElementById("game-grid");
-if (grid) {
-  games.forEach(game => {
-    const card = document.createElement("div");
-    card.classList.add("card");
-    card.textContent = game.name;
-    card.onclick = () => {
-      window.location.href = `play.html?game=${game.folder}`;
-    };
-    grid.appendChild(card);
-  });
-}
+games.forEach(game => {
+  const card = document.createElement("div");
+  card.classList.add("card");
+  card.textContent = game.name;
+  card.onclick = () => window.location.href = `play.html?game=${game.folder}`;
+  grid.appendChild(card);
+});
 
 // SEARCH
 const search = document.getElementById("search");
-if (search) {
-  search.addEventListener("input", () => {
-    const term = search.value.toLowerCase();
-    document.querySelectorAll(".card").forEach(card => {
-      const name = card.textContent.toLowerCase();
-      card.style.display = name.includes(term) ? "block" : "none";
-    });
+search.addEventListener("input", () => {
+  const term = search.value.toLowerCase();
+  document.querySelectorAll(".card").forEach(card => {
+    card.style.display = card.textContent.toLowerCase().includes(term) ? "block" : "none";
   });
-}
+});
