@@ -56,10 +56,11 @@
 
     if (game && titles[game]) {
       titleEl.textContent = titles[game];
-      frameEl.src = `games/${game}/index.html`;
+      frameEl.src = `${game}/index.html`;   // FIXED PATH
     } else {
       titleEl.textContent = "Game not found";
     }
   </script>
 </body>
 </html>
+
