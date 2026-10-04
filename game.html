@@ -5,7 +5,7 @@
        crossorigin="anonymous"></script>
 
   <meta charset="UTF-8">
-  <title>Play Game</title>
+  <title id="title">Loading...</title>
 </head>
 
 <body>
@@ -22,7 +22,7 @@
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 
-<iframe id="game-frame" width="100%" height="600px"></iframe>
+<iframe id="game-frame" width="100%" height="600px" style="border:none;"></iframe>
 
 <script>
   // Get ?g=foldername from URL
@@ -30,7 +30,12 @@
   const game = params.get("g");
 
   if (game) {
-    document.getElementById("game-title").innerText = game.replace(/-/g, " ");
+    // Title formatting
+    const formatted = game.replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+    document.getElementById("game-title").innerText = formatted;
+    document.getElementById("title").innerText = formatted + " | GeographyWork";
+
+    // Load the game
     document.getElementById("game-frame").src = `/${game}/index.html`;
   } else {
     document.getElementById("game-title").innerText = "Game not found";
