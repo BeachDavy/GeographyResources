@@ -1,138 +1,75 @@
-/* --- OLD GAME SYSTEM (KEEPING YOUR ORIGINAL PLAY.HTML WORKING) --- */
-
-const oldGames = {
-  "1v1space": "1v1space",
-  "100ng": "100ng",
-  "2048": "2048",
-  "adrenalinechallenge": "adrenalinechallenge",
-  "among-us": "among-us",
-  "awesometanks2": "awesometanks2",
-  "basketball-stars": "basketball-stars",
-  "cookie-clicker": "cookie-clicker",
-  "crossyroad": "crossyroad",
-  "cubefield": "cubefield",
-  "death-run-3d": "death-run-3d",
-  "DogeMiner": "DogeMiner",
-  "geodash": "geodash",
-  "minecraft-classic": "minecraft-classic",
-  "paperio2": "paperio2",
-  "plants-vs-zombies-1": "plants-vs-zombies-1",
-  "precision-client": "precision-client",
-  "retro-bowl": "retro-bowl",
-  "rooftop-snipers": "rooftop-snipers",
-  "run-3": "run-3",
-  "runner": "runner",
-  "sandboxels": "sandboxels",
-  "slitherio": "slitherio",
-  "slope": "slope",
-  "snowbattle": "snowbattle",
-  "soccer-skills": "soccer-skills",
-  "stickwar": "stickwar",
-  "subway-surfers-ny": "subway-surfers-ny",
-  "thebattle": "thebattle"
-};
-
-const oldTitles = {
-  "1v1space": "1v1 Space",
-  "100ng": "100ng",
-  "2048": "2048",
-  "adrenalinechallenge": "Adrenaline Challenge",
-  "among-us": "Among Us",
-  "awesometanks2": "Awesome Tanks 2",
-  "basketball-stars": "Basketball Stars",
-  "cookie-clicker": "Cookie Clicker",
-  "crossyroad": "Crossy Road",
-  "cubefield": "Cubefield",
-  "death-run-3d": "Death Run 3D",
-  "DogeMiner": "Doge Miner",
-  "geodash": "GeoDash",
-  "minecraft-classic": "Minecraft Classic",
-  "paperio2": "Paper.io 2",
-  "plants-vs-zombies-1": "Plants vs Zombies 1",
-  "precision-client": "Precision Client",
-  "retro-bowl": "Retro Bowl",
-  "rooftop-snipers": "Rooftop Snipers",
-  "run-3": "Run 3",
-  "runner": "Runner",
-  "sandboxels": "Sandboxels",
-  "slitherio": "Slither.io",
-  "slope": "Slope",
-  "snowbattle": "Snow Battle",
-  "soccer-skills": "Soccer Skills",
-  "stickwar": "Stick War",
-  "subway-surfers-ny": "Subway Surfers NY",
-  "thebattle": "The Battle"
-};
-
-/* --- NEW SIDEBAR + ICON SYSTEM --- */
-
-const newGames = [
-    { name: "GunSpin", folder: "gunspin", icon: "gunspin.png" },
-    { name: "Sushi Party", folder: "sushi-party", icon: "sushi-party.png" },
-    { name: "Stickman Battle", folder: "stickman-battle", icon: "stickman-battle.png" },
-    { name: "Draw Climber", folder: "draw-climber", icon: "draw-climber.png" },
-    { name: "Spiral Roll", folder: "spiral-roll", icon: "spiral-roll.png" },
-    { name: "Blumgi Merge", folder: "blumgi-merge", icon: "blumgi-merge.png" },
-    { name: "Blocky Blast Puzzle", folder: "blocky-blast", icon: "blocky-blast.png" },
-    { name: "Fruits of Fury", folder: "fruits-of-fury", icon: "fruits-of-fury.png" },
-    { name: "Brain Test", folder: "brain-test", icon: "brain-test.png" },
-    { name: "CombiMon", folder: "combimon", icon: "combimon.png" },
-    { name: "Escape Road 3", folder: "escape-road", icon: "escape-road.png" },
-    { name: "Ragdoll Drop", folder: "ragdoll-drop", icon: "ragdoll-drop.png" }
+// Games you actually have (match folder names)
+const games = [
+  { name: "1v1 Space", folder: "1v1space", icon: "1v1space.png" },
+  { name: "100ng", folder: "100ng", icon: "100ng.png" },
+  { name: "Doge Miner", folder: "DogeMiner", icon: "DogeMiner.png" },
+  { name: "Adrenaline Challenge", folder: "adrenalinechallenge", icon: "adrenalinechallenge.png" },
+  { name: "Among Us", folder: "among-us", icon: "among-us.png" },
+  { name: "Awesome Tanks 2", folder: "awesometanks2", icon: "awesometanks2.png" },
+  { name: "Cookie Clicker", folder: "cookie-clicker", icon: "cookie-clicker.png" },
+  { name: "Crossy Road", folder: "crossyroad", icon: "crossyroad.png" },
+  { name: "Cubefield", folder: "cubefield", icon: "cubefield.png" },
+  { name: "Death Run 3D", folder: "death-run-3d", icon: "death-run-3d.png" },
+  { name: "GeoDash", folder: "geodash", icon: "geodash.png" },
+  { name: "Minecraft Classic", folder: "minecraft-classic", icon: "minecraft-classic.png" },
+  { name: "Paper.io 2", folder: "paperio2", icon: "paperio2.png" },
+  { name: "Plants vs Zombies 1", folder: "plants-vs-zombies-1", icon: "plants-vs-zombies-1.png" },
+  { name: "Precision Client", folder: "precision-client", icon: "precision-client.png" },
+  { name: "Retro Bowl", folder: "retro-bowl", icon: "retro-bowl.png" },
+  { name: "Run 3", folder: "run-3", icon: "run-3.png" },
+  { name: "Runner", folder: "runner", icon: "runner.png" },
+  { name: "Sandboxels", folder: "sandboxels", icon: "sandboxels.png" },
+  { name: "Slither.io", folder: "slitherio", icon: "slitherio.png" },
+  { name: "Slope", folder: "slope", icon: "slope.png" },
+  { name: "Snow Battle", folder: "snowbattle", icon: "snowbattle.png" },
+  { name: "Soccer Skills", folder: "soccer-skills", icon: "soccer-skills.png" },
+  { name: "Stick War", folder: "stickwar", icon: "stickwar.png" },
+  { name: "Subway Surfers NY", folder: "subway-surfers-ny", icon: "subway-surfers-ny.png" },
+  { name: "The Battle", folder: "thebattle", icon: "thebattle.png" }
 ];
 
-/* --- SIDEBAR GENERATION --- */
-
+// SIDEBAR
 const sideMenu = document.querySelector(".side-menu ul");
-
-newGames.forEach(game => {
+if (sideMenu) {
+  games.forEach(game => {
     const li = document.createElement("li");
-
     li.innerHTML = `
-        <img src="icons/${game.icon}" class="sidebar-icon">
-        <span>${game.name}</span>
+      <img src="icons/${game.icon}" class="sidebar-icon">
+      <span>${game.name}</span>
     `;
-
     li.onclick = () => {
-        window.location.href = `play.html?game=${game.folder}`;
+      window.location.href = `play.html?game=${game.folder}`;
     };
-
     sideMenu.appendChild(li);
-});
+  });
+}
 
-/* --- GAME GRID GENERATION --- */
-
+// GAME GRID
 const grid = document.getElementById("game-grid");
-
 if (grid) {
-    newGames.forEach(game => {
-        const card = document.createElement("div");
-        card.classList.add("card");
-
-        card.innerHTML = `
-            <img src="icons/${game.icon}" class="sidebar-icon">
-            <div>${game.name}</div>
-        `;
-
-        card.onclick = () => {
-            window.location.href = `play.html?game=${game.folder}`;
-        };
-
-        grid.appendChild(card);
-    });
+  games.forEach(game => {
+    const card = document.createElement("div");
+    card.classList.add("card");
+    card.innerHTML = `
+      <img src="icons/${game.icon}" class="sidebar-icon">
+      <div>${game.name}</div>
+    `;
+    card.onclick = () => {
+      window.location.href = `play.html?game=${game.folder}`;
+    };
+    grid.appendChild(card);
+  });
 }
 
-/* --- SEARCH SYSTEM --- */
-
+// SEARCH
 const search = document.getElementById("search");
-
 if (search) {
-    search.addEventListener("input", () => {
-        const term = search.value.toLowerCase();
-
-        document.querySelectorAll(".card").forEach(card => {
-            const name = card.innerText.toLowerCase();
-            card.style.display = name.includes(term) ? "block" : "none";
-        });
+  search.addEventListener("input", () => {
+    const term = search.value.toLowerCase();
+    document.querySelectorAll(".card").forEach(card => {
+      const name = card.innerText.toLowerCase();
+      card.style.display = name.includes(term) ? "block" : "none";
     });
+  });
 }
+
