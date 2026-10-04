@@ -1,68 +1,72 @@
+/* --- GAME LIST --- */
+
 const games = [
-  { id: "among-us", title: "Among Us" },
-  { id: "slope", title: "Slope" },
-  { id: "retro-bowl", title: "Retro Bowl" },
-  { id: "rooftop-snipers", title: "Rooftop Snipers" },
-  { id: "soccer-skills", title: "Soccer Skills" },
-  { id: "2048", title: "2048" },
-  { id: "100ng", title: "100ng" },
-  { id: "1v1space", title: "1v1 Space" },
-  { id: "basketball-stars", title: "Basketball Stars" },
-  { id: "cookie-clicker", title: "Cookie Clicker" },
-  { id: "crossyroad", title: "Crossy Road" },
-  { id: "cubefield", title: "Cubefield" },
-  { id: "death-run-3d", title: "Death Run 3D" },
-  { id: "DogeMiner", title: "Doge Miner" },
-  { id: "geodash", title: "GeoDash" },
-  { id: "minecraft-classic", title: "Minecraft Classic" },
-  { id: "paperio2", title: "Paper.io 2" },
-  { id: "plants vs zombies 1", title: "Plants vs Zombies 1" },
-  { id: "precision-client", title: "Precision Client" },
-  { id: "runner", title: "Runner" },
-  { id: "run 3", title: "Run 3" },
-  { id: "sandboxels", title: "Sandboxels" },
-  { id: "slitherio", title: "Slither.io" },
-  { id: "snowbattle", title: "Snow Battle" },
-  { id: "stickwar", title: "Stick War" },
-  { id: "subway-surfers-ny", title: "Subway Surfers NY" },
-  { id: "thebattle", title: "The Battle" },
-  { id: "awesometanks2", title: "Awesome Tanks 2" }
+    { name: "GunSpin", folder: "gunspin", icon: "gunspin.png" },
+    { name: "Sushi Party", folder: "sushi-party", icon: "sushi-party.png" },
+    { name: "Stickman Battle", folder: "stickman-battle", icon: "stickman-battle.png" },
+    { name: "Draw Climber", folder: "draw-climber", icon: "draw-climber.png" },
+    { name: "Spiral Roll", folder: "spiral-roll", icon: "spiral-roll.png" },
+    { name: "Blumgi Merge", folder: "blumgi-merge", icon: "blumgi-merge.png" },
+    { name: "Blocky Blast Puzzle", folder: "blocky-blast", icon: "blocky-blast.png" },
+    { name: "Fruits of Fury", folder: "fruits-of-fury", icon: "fruits-of-fury.png" },
+    { name: "Brain Test", folder: "brain-test", icon: "brain-test.png" },
+    { name: "CombiMon", folder: "combimon", icon: "combimon.png" },
+    { name: "Escape Road 3", folder: "escape-road", icon: "escape-road.png" },
+    { name: "Ragdoll Drop", folder: "ragdoll-drop", icon: "ragdoll-drop.png" }
 ];
 
+/* --- SIDEBAR GENERATION --- */
+
+const sideMenu = document.querySelector(".side-menu ul");
+
+games.forEach(game => {
+    const li = document.createElement("li");
+
+    li.innerHTML = `
+        <img src="icons/${game.icon}" class="sidebar-icon">
+        <span>${game.name}</span>
+    `;
+
+    li.onclick = () => {
+        window.location.href = `play.html?game=${game.folder}`;
+    };
+
+    sideMenu.appendChild(li);
+});
+
+/* --- GAME GRID GENERATION --- */
+
 const grid = document.getElementById("game-grid");
-const searchInput = document.getElementById("search");
 
-function renderGames(filter = "") {
-  grid.innerHTML = "";
-  const q = filter.toLowerCase();
+if (grid) {
+    games.forEach(game => {
+        const card = document.createElement("div");
+        card.classList.add("card");
 
-  games
-    .filter(g => g.title.toLowerCase().includes(q) || g.id.toLowerCase().includes(q))
-    .forEach(g => {
-      const card = document.createElement("div");
-      card.className = "card";
-      card.onclick = () => {
-        window.location.href = `play.html?game=${encodeURIComponent(g.id)}`;
-      };
+        card.innerHTML = `
+            <img src="icons/${game.icon}" class="sidebar-icon">
+            <div>${game.name}</div>
+        `;
 
-      const title = document.createElement("div");
-      title.className = "card-title";
-      title.textContent = g.title;
+        card.onclick = () => {
+            window.location.href = `play.html?game=${game.folder}`;
+        };
 
-      const tag = document.createElement("div");
-      tag.className = "card-tag";
-      tag.textContent = g.id;
-
-      card.appendChild(title);
-      card.appendChild(tag);
-      grid.appendChild(card);
+        grid.appendChild(card);
     });
 }
 
-if (grid) {
-  renderGames();
+/* --- SEARCH SYSTEM --- */
 
-  searchInput.addEventListener("input", () => {
-    renderGames(searchInput.value);
-  });
+const search = document.getElementById("search");
+
+if (search) {
+    search.addEventListener("input", () => {
+        const term = search.value.toLowerCase();
+
+        document.querySelectorAll(".card").forEach(card => {
+            const name = card.innerText.toLowerCase();
+            card.style.display = name.includes(term) ? "block" : "none";
+        });
+    });
 }
