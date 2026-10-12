@@ -32,7 +32,7 @@ const games = [
 ];
 
 // =========================
-// SIDEBAR LIST
+// SIDEBAR LIST (text only)
 // =========================
 
 const sidebar = document.querySelector(".side-menu ul");
@@ -44,7 +44,7 @@ games.forEach(game => {
 });
 
 // =========================
-// GAME GRID
+// GAME GRID (text-only boxes)
 // =========================
 
 const grid = document.getElementById("game-grid");
@@ -54,7 +54,6 @@ games.forEach(game => {
     div.className = "game-card";
     div.innerHTML = `
         <a href="play.html?game=${game.id}">
-            <img src="icons/${game.id}.png" alt="${game.name}">
             <p>${game.name}</p>
         </a>
     `;
@@ -65,10 +64,4 @@ games.forEach(game => {
 // SEARCH BAR
 // =========================
 
-document.getElementById("search").addEventListener("input", function () {
-    const term = this.value.toLowerCase();
-    document.querySelectorAll(".game-card").forEach(card => {
-        const name = card.querySelector("p").innerText.toLowerCase();
-        card.style.display = name.includes(term) ? "" : "none";
-    });
-});
+document.getElementById("
