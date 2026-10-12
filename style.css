@@ -1,4 +1,7 @@
-/* GLOBAL PAGE STYLE */
+/* ============================
+   GLOBAL PAGE STYLE
+   ============================ */
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -6,13 +9,19 @@ body {
   color: #e0e0e0;
 }
 
-/* LAYOUT WRAPPER */
+/* ============================
+   LAYOUT WRAPPER
+   ============================ */
+
 .layout {
   display: flex;
   min-height: 100vh;
 }
 
-/* SIDE MENU */
+/* ============================
+   SIDE MENU
+   ============================ */
+
 .side-menu {
   width: 240px;
   background: #1b263b;
@@ -50,7 +59,16 @@ body {
   background: #778da9;
 }
 
-/* MAIN CONTENT */
+.side-menu a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+}
+
+/* ============================
+   MAIN CONTENT
+   ============================ */
+
 .container {
   flex: 1;
   max-width: 1100px;
@@ -58,7 +76,10 @@ body {
   padding: 40px 20px;
 }
 
-/* TITLES */
+/* ============================
+   TITLES
+   ============================ */
+
 h1 {
   text-align: center;
   font-size: 42px;
@@ -75,7 +96,10 @@ h2 {
   color: #e0e0e0;
 }
 
-/* SEARCH BAR */
+/* ============================
+   SEARCH BAR
+   ============================ */
+
 #search {
   width: 100%;
   padding: 14px;
@@ -87,15 +111,21 @@ h2 {
   margin-bottom: 30px;
 }
 
-/* GAME GRID */
+/* ============================
+   GAME GRID
+   ============================ */
+
 #game-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 25px;
 }
 
-/* GAME CARD */
-.card {
+/* ============================
+   GAME CARD (OLD BOX STYLE)
+   ============================ */
+
+.game-card {
   background: #1b263b;
   border-radius: 14px;
   padding: 20px;
@@ -108,12 +138,20 @@ h2 {
   transition: transform 0.15s, box-shadow 0.15s;
 }
 
-.card:hover {
+.game-card:hover {
   transform: translateY(-5px);
   box-shadow: 0px 6px 15px rgba(0,0,0,0.4);
 }
 
-/* FOOTER */
+.game-card a {
+  text-decoration: none;
+  color: #fff;
+}
+
+/* ============================
+   FOOTER
+   ============================ */
+
 footer {
   text-align: center;
   margin-top: 40px;
@@ -122,7 +160,10 @@ footer {
   color: #e0e0e0;
 }
 
-/* PLAY PAGE */
+/* ============================
+   PLAY PAGE
+   ============================ */
+
 .play-body {
   margin: 0;
   background: #0d1b2a;
