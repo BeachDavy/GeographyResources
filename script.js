@@ -1,56 +1,74 @@
+// =========================
+// GAME LIST (g1 → g26)
+// =========================
+
 const games = [
-  { name: "1v1 Space", folder: "1v1space" },
-  { name: "100ng", folder: "100ng" },
-  { name: "Doge Miner", folder: "DogeMiner" },
-  { name: "Adrenaline Challenge", folder: "adrenalinechallenge" },
-  { name: "Among Us", folder: "among-us" },
-  { name: "Awesome Tanks 2", folder: "awesometanks2" },
-  { name: "Cookie Clicker", folder: "cookie-clicker" },
-  { name: "Crossy Road", folder: "crossyroad" },
-  { name: "Cubefield", folder: "cubefield" },
-  { name: "Death Run 3D", folder: "death-run-3d" },
-  { name: "GeoDash", folder: "geodash" },
-  { name: "Minecraft Classic", folder: "minecraft-classic" },
-  { name: "Paper.io 2", folder: "paperio2" },
-  { name: "Plants vs Zombies 1", folder: "plants-vs-zombies-1" },
-  { name: "Precision Client", folder: "precision-client" },
-  { name: "Retro Bowl", folder: "retro-bowl" },
-  { name: "Run 3", folder: "run-3" },
-  { name: "Runner", folder: "runner" },
-  { name: "Sandboxels", folder: "sandboxels" },
-  { name: "Slither.io", folder: "slitherio" },
-  { name: "Slope", folder: "slope" },
-  { name: "Snow Battle", folder: "snowbattle" },
-  { name: "Soccer Skills", folder: "soccer-skills" },
-  { name: "Stick War", folder: "stickwar" },
-  { name: "Subway Surfers NY", folder: "subway-surfers-ny" },
-  { name: "The Battle", folder: "thebattle" }
+    { id: "g1",  name: "1v1space" },
+    { id: "g2",  name: "100ng" },
+    { id: "g3",  name: "adrenalinechallenge" },
+    { id: "g4",  name: "among-us" },
+    { id: "g5",  name: "awesometanks2" },
+    { id: "g6",  name: "cookie-clicker" },
+    { id: "g7",  name: "crossyroad" },
+    { id: "g8",  name: "cubefield" },
+    { id: "g9",  name: "death-run-3d" },
+    { id: "g10", name: "DogeMiner" },
+    { id: "g11", name: "geodash" },
+    { id: "g12", name: "minecraft-classic" },
+    { id: "g13", name: "paperio2" },
+    { id: "g14", name: "plants-vs-zombies-1" },
+    { id: "g15", name: "precision-client" },
+    { id: "g16", name: "retro-bowl" },
+    { id: "g17", name: "run-3" },
+    { id: "g18", name: "runner" },
+    { id: "g19", name: "sandboxels" },
+    { id: "g20", name: "slitherio" },
+    { id: "g21", name: "slope" },
+    { id: "g22", name: "snowbattle" },
+    { id: "g23", name: "soccer-skills" },
+    { id: "g24", name: "stickwar" },
+    { id: "g25", name: "subway-surfers-ny" },
+    { id: "g26", name: "thebattle" }
 ];
 
-// SIDEBAR
-const sideMenu = document.querySelector(".side-menu ul");
+// =========================
+// SIDEBAR LIST
+// =========================
+
+const sidebar = document.querySelector(".side-menu ul");
+
 games.forEach(game => {
-  const li = document.createElement("li");
-  li.textContent = game.name;
-  li.onclick = () => window.location.href = `play.html?game=${game.folder}`;
-  sideMenu.appendChild(li);
+    const li = document.createElement("li");
+    li.innerHTML = `<a href="play.html?game=${game.id}">${game.name}</a>`;
+    sidebar.appendChild(li);
 });
 
-// GRID
+// =========================
+// GAME GRID
+// =========================
+
 const grid = document.getElementById("game-grid");
+
 games.forEach(game => {
-  const card = document.createElement("div");
-  card.classList.add("card");
-  card.textContent = game.name;
-  card.onclick = () => window.location.href = `play.html?game=${game.folder}`;
-  grid.appendChild(card);
+    const div = document.createElement("div");
+    div.className = "game-card";
+    div.innerHTML = `
+        <a href="play.html?game=${game.id}">
+            <img src="icons/${game.id}.png" alt="${game.name}">
+            <p>${game.name}</p>
+        </a>
+    `;
+    grid.appendChild(div);
 });
 
-// SEARCH
-const search = document.getElementById("search");
-search.addEventListener("input", () => {
-  const term = search.value.toLowerCase();
-  document.querySelectorAll(".card").forEach(card => {
-    card.style.display = card.textContent.toLowerCase().includes(term) ? "block" : "none";
-  });
+// =========================
+// SEARCH BAR
+// =========================
+
+document.getElementById("search").addEventListener("input", function () {
+    const term = this.value.toLowerCase();
+    document.querySelectorAll(".game-card").forEach(card => {
+        const name = card.querySelector("p").innerText.toLowerCase();
+        card.style.display = name.includes(term) ? "" : "none";
+    });
 });
