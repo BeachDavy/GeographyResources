@@ -1,66 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Play Game</title>
-  <link rel="stylesheet" href="style.css">
+    <title>Play Game</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="play-body">
-  <header class="play-header">
-    <a href="index.html" class="back-btn">← Back to games</a>
-    <span id="game-title">Loading...</span>
-  </header>
 
-  <main class="play-main">
-    <div class="play-frame-wrap">
-      <iframe id="game-frame" src="" frameborder="0" allowfullscreen></iframe>
+    <!-- HEADER -->
+    <div class="play-header">
+        <a class="back-btn" href="index.html">← Back</a>
+        <span id="game-title">Loading...</span>
     </div>
-  </main>
 
-  <script>
+    <!-- GAME FRAME -->
+    <div class="play-main">
+        <div class="play-frame-wrap">
+            <iframe id="game-frame"></iframe>
+        </div>
+    </div>
+
+<script>
+    // Get game ID from URL
     const params = new URLSearchParams(window.location.search);
-    const game = params.get('game');
+    const gameID = params.get("game");
 
-    const titles = {
-      "1v1space": "1v1 Space",
-      "100ng": "100ng",
-      "DogeMiner": "Doge Miner",
-      "adrenalinechallenge": "Adrenaline Challenge",
-      "among-us": "Among Us",
-      "awesometanks2": "Awesome Tanks 2",
-      "cookie-clicker": "Cookie Clicker",
-      "crossyroad": "Crossy Road",
-      "cubefield": "Cubefield",
-      "death-run-3d": "Death Run 3D",
-      "geodash": "GeoDash",
-      "minecraft-classic": "Minecraft Classic",
-      "paperio2": "Paper.io 2",
-      "plants-vs-zombies-1": "Plants vs Zombies 1",
-      "precision-client": "Precision Client",
-      "retro-bowl": "Retro Bowl",
-      "run-3": "Run 3",
-      "runner": "Runner",
-      "sandboxels": "Sandboxels",
-      "slitherio": "Slither.io",
-      "slope": "Slope",
-      "snowbattle": "Snow Battle",
-      "soccer-skills": "Soccer Skills",
-      "stickwar": "Stick War",
-      "subway-surfers-ny": "Subway Surfers NY",
-      "thebattle": "The Battle"
+    // Map g# → folder name
+    const gameMap = {
+        "g1": "1v1space",
+        "g2": "100ng",
+        "g3": "adrenalinechallenge",
+        "g4": "among-us",
+        "g5": "awesometanks2",
+        "g6": "cookie-clicker",
+        "g7": "crossyroad",
+        "g8": "cubefield",
+        "g9": "death-run-3d",
+        "g10": "DogeMiner",
+        "g11": "geodash",
+        "g12": "minecraft-classic",
+        "g13": "paperio2",
+        "g14": "plants-vs-zombies-1",
+        "g15": "precision-client",
+        "g16": "retro-bowl",
+        "g17": "run-3",
+        "g18": "runner",
+        "g19": "sandboxels",
+        "g20": "slitherio",
+        "g21": "slope",
+        "g22": "snowbattle",
+        "g23": "soccer-skills",
+        "g24": "stickwar",
+        "g25": "subway-surfers-ny",
+        "g26": "thebattle"
     };
 
-    const titleEl = document.getElementById('game-title');
-    const frameEl = document.getElementById('game-frame');
+    // Set title
+    document.getElementById("game-title").innerText =
+        gameID ? gameMap[gameID] : "Unknown Game";
 
-    if (game && titles[game]) {
-      titleEl.textContent = titles[game];
-      frameEl.src = `${game}/index.html`;   // FIXED PATH
+    // Load iframe
+    if (gameID && gameMap[gameID]) {
+        document.getElementById("game-frame").src =
+            `games/${gameMap[gameID]}/index.html`;
     } else {
-      titleEl.textContent = "Game not found";
+        document.getElementById("game-frame").src = "";
     }
-  </script>
+</script>
+
 </body>
 </html>
-
