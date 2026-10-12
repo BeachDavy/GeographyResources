@@ -25,7 +25,7 @@
     const params = new URLSearchParams(window.location.search);
     const gameID = params.get("game");
 
-    // Map g# → folder name
+    // Map g# → display name
     const gameMap = {
         "g1": "1v1space",
         "g2": "100ng",
@@ -59,10 +59,10 @@
     document.getElementById("game-title").innerText =
         gameID ? gameMap[gameID] : "Unknown Game";
 
-    // Load iframe
-    if (gameID && gameMap[gameID]) {
+    // Load iframe (FINAL FIX)
+    if (gameID) {
         document.getElementById("game-frame").src =
-            `games/${gameMap[gameID]}/index.html`;
+            `${gameID}/index.html`;
     } else {
         document.getElementById("game-frame").src = "";
     }
