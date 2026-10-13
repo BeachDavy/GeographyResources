@@ -32,7 +32,7 @@ const games = [
 ];
 
 // =========================
-// SIDEBAR LIST (text only)
+// SIDEBAR LIST
 // =========================
 
 const sidebar = document.querySelector(".side-menu ul");
@@ -44,7 +44,7 @@ games.forEach(game => {
 });
 
 // =========================
-// GAME GRID (text-only boxes)
+// GAME GRID
 // =========================
 
 const grid = document.getElementById("game-grid");
@@ -64,4 +64,10 @@ games.forEach(game => {
 // SEARCH BAR
 // =========================
 
-document.getElementById("
+document.getElementById("search").addEventListener("input", function () {
+    const term = this.value.toLowerCase();
+    document.querySelectorAll(".game-card").forEach(card => {
+        const name = card.querySelector("p").innerText.toLowerCase();
+        card.style.display = name.includes(term) ? "" : "none";
+    });
+});
