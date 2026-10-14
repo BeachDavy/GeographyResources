@@ -3,6 +3,10 @@
 <head>
     <title>Play Game</title>
     <link rel="stylesheet" href="style.css">
+
+    <!-- ADSENSE SCRIPT -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7243495410782424"
+         crossorigin="anonymous"></script>
 </head>
 
 <body class="play-body">
@@ -13,12 +17,34 @@
         <span id="game-title">Loading...</span>
     </div>
 
+    <!-- AD ABOVE GAME (replace slot ID later) -->
+    <ins class="adsbygoogle"
+         style="display:block;margin:20px 0"
+         data-ad-client="ca-pub-7243495410782424"
+         data-ad-slot="PLAY_TOP_SLOT_ID"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
     <!-- GAME FRAME -->
     <div class="play-main">
         <div class="play-frame-wrap">
             <iframe id="game-frame"></iframe>
         </div>
     </div>
+
+    <!-- AD BELOW GAME (replace slot ID later) -->
+    <ins class="adsbygoogle"
+         style="display:block;margin:20px 0"
+         data-ad-client="ca-pub-7243495410782424"
+         data-ad-slot="PLAY_BOTTOM_SLOT_ID"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
 
 <script>
     // Get game ID from URL
@@ -59,7 +85,7 @@
     document.getElementById("game-title").innerText =
         gameID ? gameMap[gameID] : "Unknown Game";
 
-    // Load iframe (FINAL FIX)
+    // Load iframe
     if (gameID) {
         document.getElementById("game-frame").src =
             `${gameID}/index.html`;
