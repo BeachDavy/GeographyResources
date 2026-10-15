@@ -2,7 +2,8 @@
 
 ## Project Overview
 Static HTML/CSS/JS "unblocked games" site. No build step, no backend, no database.
-Games live in `g1/`–`g26/` directories, each with its own `index.html`.
+Games live in `g1/`–`g100/` directories, each with its own `index.html`.
+Games g27–g100 were sourced from the HTML5GameArchive (github.com/HTML5GameArchive/gfiles).
 
 ## Running the app
 ```
