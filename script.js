@@ -102,7 +102,9 @@ const games = [
     { id: "g97", name: "Grindcraft" },
     { id: "g98", name: "Space Company" },
     { id: "g99", name: "Basketball Stars" },
-    { id: "g100", name: "Moto X3M" }
+    { id: "g100", name: "Moto X3M" },
+    { id: "g101", name: "Bad Time Simulator (Undertale)" },
+    { id: "g102", name: "Fun Time Simulator (Deltarune)" }
 ];
 
 // =========================
