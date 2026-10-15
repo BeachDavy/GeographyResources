@@ -194,11 +194,26 @@ h2 {
 }
 
 .game-card a {
-  display: block;       /* FIX: entire card is clickable */
+  display: flex;        /* FIX: entire card is clickable */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
   width: 100%;
   height: 100%;
   text-decoration: none;
   color: #fff;
+}
+
+/* Logo shown at the top of a card */
+.game-logo {
+  width: 100%;
+  height: 110px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: #0d1b2a;
+  padding: 6px;
+  box-sizing: border-box;
 }
 
 /* ============================
