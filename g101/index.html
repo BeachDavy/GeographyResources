@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Bad Time Simulator (Sans Fight)</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            background: #000;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+        }
+        #c2canvasdiv {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transform-origin: center center;
+        }
+        #c2canvas {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="c2canvasdiv">
+        <canvas id="c2canvas" width="1280" height="960">
+            <h1>Your browser does not appear to support HTML5.</h1>
+        </canvas>
+    </div>
+
+    <script src="jquery-3.4.1.min.js"></script>
+    <script src="c2runtime.js"></script>
+    <script>
+        // Scale the 1280x960 game to fit the viewport
+        function cr_sizeCanvas() {
+            var canvas = document.getElementById("c2canvas");
+            var gw = 1280, gh = 960;
+            var ww = window.innerWidth, wh = window.innerHeight;
+            var scale = Math.min(ww / gw, wh / gh);
+            canvas.style.width = (gw * scale) + "px";
+            canvas.style.height = (gh * scale) + "px";
+            var div = document.getElementById("c2canvasdiv");
+            div.style.width = (gw * scale) + "px";
+            div.style.height = (gh * scale) + "px";
+        }
+
+        jQuery(document).ready(function() {
+            cr_sizeCanvas();
+            window.addEventListener("resize", cr_sizeCanvas);
+            // Create the runtime
+            cr_createRuntime("c2canvas");
+        });
+    </script>
+</body>
+</html>
