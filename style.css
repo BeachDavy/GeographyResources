@@ -10,6 +10,51 @@ body {
 }
 
 /* ============================
+   TOP SEARCH BAR (very top)
+   ============================ */
+
+.top-search-bar {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 14px 20px;
+  background: #1b263b;
+  border-bottom: 3px solid #415a77;
+}
+
+.top-search-bar #search {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  display: block;
+  padding: 14px;
+  font-size: 18px;
+  border-radius: 10px;
+  border: 2px solid #415a77;
+  background: #0d1b2a;
+  color: #fff;
+}
+
+/* ============================
+   BANNER (top)
+   ============================ */
+
+.banner {
+  width: 100%;
+  text-align: center;
+  background: #0d1b2a;
+  padding: 0;
+  margin: 0;
+}
+
+.banner img {
+  width: 100%;
+  max-width: 1200px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* ============================
    LAYOUT WRAPPER
    ============================ */
 
