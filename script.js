@@ -140,7 +140,7 @@ games.forEach(game => {
     const div = document.createElement("div");
     div.className = "game-card";
     const logoHtml = game.logo
-        ? `<img class="game-logo" src="${game.logo}" alt="${game.name}" loading="lazy" onerror="this.style.display='none'">`
+        ? `<img class="game-logo" src="${game.logo}" alt="${game.name}" onerror="this.style.display='none'">`
         : "";
     div.innerHTML = `
         <a href="play.html?game=${game.id}">
