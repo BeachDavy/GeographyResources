@@ -14,6 +14,10 @@ Serves on port 3000 via nginx (alpine). Source is bind-mounted read-only.
 The repo root directory has `drwx------` (700) permissions. nginx's default
 worker user cannot traverse it, so `nginx.base44.conf` sets `user root;`.
 
+## Healthcheck
+Uses `wget --spider http://127.0.0.1:80/` (not `localhost`, which resolves to
+IPv6 `::1` first). The nginx config listens on both IPv4 and IPv6.
+
 ## No secrets required
 This is a pure static site — no external service credentials needed.
 
