@@ -2,8 +2,11 @@
 
 ## Project Overview
 Static HTML/CSS/JS "unblocked games" site. No build step, no backend, no database.
-Games live in `g1/`–`g100/` directories, each with its own `index.html`.
+Games live in `g1/`–`g129/` directories, each with its own `index.html`.
 Games g27–g100 were sourced from the HTML5GameArchive (github.com/HTML5GameArchive/gfiles).
+Games g103–g129 were sourced from the Offline-HTML-Games-Pack (github.com/CoolDude2349/Offline-HTML-Games-Pack)
+and MonkeyGG2 (github.com/MonkeyGG2/monkeygg2.github.io). All are self-contained single-file or
+fully-bundled HTML5 games with no external dependencies, so they cannot be blocked by school filters.
 
 ## Running the app
 ```

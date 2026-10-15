@@ -452,7 +452,7 @@ function callRue() {
 				document.getElementById("rueCallerBox").remove();
 			}, 2000);
 		}
-		script.src = "https://r74n.com/rue/rue.js";
+		script.src = "rue.js";
 		document.head.appendChild(script);
 	}
 	else {
