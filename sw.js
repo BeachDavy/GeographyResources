@@ -6,7 +6,7 @@
 // the filter has nothing to inspect or block.
 // =========================
 
-const CACHE_VERSION = 'v1';
+const CACHE_VERSION = 'v2';
 const CACHE_NAME = 'geo-res-' + CACHE_VERSION;
 
 // App shell — cached immediately on install
