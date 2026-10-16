@@ -1,11 +1,11 @@
 // =========================
-// GAME LIST (g1 → g102)
-// Each game may have a `logo` pointing to a bundled image (splash / icon /
-// title screen) inside its own folder. Games with a logo are sorted to the
-// top of the grid; games without one keep their text-only card below.
+// RESOURCE LIST (g1 → g129)
+// Each item may have a `logo` pointing to a bundled image (splash / icon /
+// title screen) inside its own folder. Items with a logo are sorted to the
+// top of the grid; items without one keep their text-only card below.
 // =========================
 
-const games = [
+const items = [
     { id: "g1",  name: "Space Dodge",   logo: "g1/splash.png" },
     { id: "g2",  name: "100ng",          logo: "g2/100ng-logo.png" },
     { id: "g3",  name: "adrenalinechallenge", logo: "g3/adrenalinechallenge.jpg" },
@@ -94,7 +94,7 @@ const games = [
     { id: "g86", name: "Time Blaster 2", logo: "g86/ts2.jpg" },
     { id: "g87", name: "Time Blaster 3", logo: "g87/logo.png" },
     { id: "g88", name: "We Become What We Behold" },
-    { id: "g89", name: "World's Hardest Game 2", logo: "g89/the-worlds-hardest-game-2.jpg" },
+    { id: "g89", name: "World's Hardest 2", logo: "g89/the-worlds-hardest-2.jpg" },
     { id: "g90", name: "XX142B2EXE" },
     { id: "g91", name: "Survival Royale", logo: "g91/zomb.png" },
     { id: "g92", name: "Basket Random" },
@@ -137,9 +137,9 @@ const games = [
     { id: "g129", name: "SuperHot" }
 ];
 
-// Games that have a logo are shown first (keeping their original order),
+// Items that have a logo are shown first (keeping their original order),
 // followed by the ones without a logo.
-games.sort((a, b) => {
+items.sort((a, b) => {
     const aHas = a.logo ? 0 : 1;
     const bHas = b.logo ? 0 : 1;
     return aHas - bHas;
@@ -151,28 +151,28 @@ games.sort((a, b) => {
 
 const sidebar = document.querySelector(".side-menu ul");
 
-games.forEach(game => {
+items.forEach(item => {
     const li = document.createElement("li");
-    li.innerHTML = `<a href="play.html?game=${game.id}">${game.name}</a>`;
+    li.innerHTML = `<a href="view.html?r=${item.id}">${item.name}</a>`;
     sidebar.appendChild(li);
 });
 
 // =========================
-// GAME GRID
+// RESOURCE GRID
 // =========================
 
-const grid = document.getElementById("game-grid");
+const grid = document.getElementById("res-grid");
 
-games.forEach(game => {
+items.forEach(item => {
     const div = document.createElement("div");
-    div.className = "game-card";
-    const logoHtml = game.logo
-        ? `<img class="game-logo" src="${game.logo}" alt="${game.name}" onerror="this.style.display='none'">`
+    div.className = "res-card";
+    const logoHtml = item.logo
+        ? `<img class="res-logo" src="${item.logo}" alt="${item.name}" onerror="this.style.display='none'">`
         : "";
     div.innerHTML = `
-        <a href="play.html?game=${game.id}">
+        <a href="view.html?r=${item.id}">
             ${logoHtml}
-            <p>${game.name}</p>
+            <p>${item.name}</p>
         </a>
     `;
     grid.appendChild(div);
@@ -184,7 +184,7 @@ games.forEach(game => {
 
 document.getElementById("search").addEventListener("input", function () {
     const term = this.value.toLowerCase();
-    document.querySelectorAll(".game-card").forEach(card => {
+    document.querySelectorAll(".res-card").forEach(card => {
         const name = card.querySelector("p").innerText.toLowerCase();
         card.style.display = name.includes(term) ? "" : "none";
     });
