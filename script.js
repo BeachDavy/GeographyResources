@@ -153,7 +153,7 @@ const sidebar = document.querySelector(".side-menu ul");
 
 games.forEach(game => {
     const li = document.createElement("li");
-    li.innerHTML = `<a href="play.html?game=${game.id}">${game.name}</a>`;
+    li.innerHTML = `<a href="resource.html?r=${game.id}">${game.name}</a>`;
     sidebar.appendChild(li);
 });
 
@@ -170,7 +170,7 @@ games.forEach(game => {
         ? `<img class="game-logo" src="${game.logo}" alt="${game.name}" onerror="this.style.display='none'">`
         : "";
     div.innerHTML = `
-        <a href="play.html?game=${game.id}">
+        <a href="resource.html?r=${game.id}">
             ${logoHtml}
             <p>${game.name}</p>
         </a>
