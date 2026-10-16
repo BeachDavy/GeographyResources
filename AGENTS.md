@@ -1,4 +1,4 @@
-# Base44 Dev Environment
+# Dev Environment
 
 ## Project Overview
 Static HTML/CSS/JS "unblocked games" site. No build step, no backend, no database.
@@ -10,13 +10,13 @@ fully-bundled HTML5 games with no external dependencies, so they cannot be block
 
 ## Running the app
 ```
-docker compose -f docker-compose.base44.yml up -d
+docker compose -f docker-compose.dev.yml up -d
 ```
 Serves on port 3000 via nginx (alpine). Source is bind-mounted read-only.
 
 ## Why nginx runs as root
 The repo root directory has `drwx------` (700) permissions. nginx's default
-worker user cannot traverse it, so `nginx.base44.conf` sets `user root;`.
+worker user cannot traverse it, so the nginx config sets `user root;`.
 
 ## Healthcheck
 Uses `wget --spider http://127.0.0.1:80/` (not `localhost`, which resolves to
