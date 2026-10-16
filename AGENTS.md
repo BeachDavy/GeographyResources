@@ -1,22 +1,22 @@
-# Base44 Dev Environment
+# Dev Environment
 
 ## Project Overview
 Static HTML/CSS/JS "unblocked games" site. No build step, no backend, no database.
-Games live in `g1/`–`g129/` directories, each with its own `index.html`.
-Games g27–g100 were sourced from the HTML5GameArchive (github.com/HTML5GameArchive/gfiles).
-Games g103–g129 were sourced from the Offline-HTML-Games-Pack (github.com/CoolDude2349/Offline-HTML-Games-Pack)
+Resources live in `h1/`–`h129/` directories, each with its own `index.html`.
+Resources h27–h100 were sourced from the HTML5GameArchive (github.com/HTML5GameArchive/gfiles).
+Resources h103–h129 were sourced from the Offline-HTML-Games-Pack (github.com/CoolDude2349/Offline-HTML-Games-Pack)
 and MonkeyGG2 (github.com/MonkeyGG2/monkeygg2.github.io). All are self-contained single-file or
 fully-bundled HTML5 games with no external dependencies, so they cannot be blocked by school filters.
 
 ## Running the app
 ```
-docker compose -f docker-compose.base44.yml up -d
+docker compose -f docker-compose.dev.yml up -d
 ```
 Serves on port 3000 via nginx (alpine). Source is bind-mounted read-only.
 
 ## Why nginx runs as root
 The repo root directory has `drwx------` (700) permissions. nginx's default
-worker user cannot traverse it, so `nginx.base44.conf` sets `user root;`.
+worker user cannot traverse it, so the nginx config sets `user root;`.
 
 ## Healthcheck
 Uses `wget --spider http://127.0.0.1:80/` (not `localhost`, which resolves to
@@ -27,5 +27,5 @@ This is a pure static site — no external service credentials needed.
 
 ## Verification
 - `curl http://localhost:3000/` → 200, serves `index.html`
-- `curl http://localhost:3000/play.html` → 200
-- Game pages: `curl http://localhost:3000/g1/index.html` → 200
+- `curl http://localhost:3000/resource.html` → 200
+- Resource pages: `curl http://localhost:3000/h1/index.html` → 200
