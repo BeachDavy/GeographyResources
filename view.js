@@ -1,0 +1,71 @@
+// view.js — loads resources into about:blank iframe
+// The resource HTML is fetched via JS and written into the iframe,
+// so the resource path never appears as a navigation URL.
+
+var params = new URLSearchParams(window.location.search);
+var resID = params.get("r");
+
+var gameMap = {
+    "g1": "Space Dodge", "g2": "100ng", "g3": "adrenalinechallenge", "g4": "among-us",
+    "g5": "awesometanks2", "g6": "cookie-clicker", "g7": "crossyroad", "g8": "cubefield",
+    "g9": "Dash Run 3D", "g10": "DogeMiner", "g11": "geodash", "g12": "minecraft-classic",
+    "g13": "paperio2", "g14": "Garden Defense", "g15": "precision-client", "g16": "retro-bowl",
+    "g17": "run-3", "g18": "runner", "g19": "sandboxels", "g20": "slitherio",
+    "g21": "slope", "g22": "Snowball Arena", "g23": "soccer-skills", "g24": "Stick Tactics",
+    "g25": "subway-surfers-ny", "g26": "The Clash",
+    "g27": "2048", "g28": "Ascii Space", "g29": "Asteroids", "g30": "Backcountry",
+    "g31": "Black Hole Square", "g32": "Bounce Back", "g33": "Breaklock", "g34": "Breakout",
+    "g35": "Captain Callisto", "g36": "Chess", "g37": "Chrome Incident", "g38": "Chrome Dino",
+    "g39": "Connect 3", "g40": "Counter Clicker", "g41": "Doodle Jump", "g42": "Drift",
+    "g43": "Drift Hunters", "g44": "Drive Mad", "g45": "Edge Not Found", "g46": "Rogue Glitch",
+    "g47": "Flappy 2048", "g48": "Flappy Bird", "g49": "Flappy Plane", "g50": "Flight Simulator",
+    "g51": "Google Snake", "g52": "Hextris", "g53": "Konnekt", "g54": "Lets Surf",
+    "g55": "Little Alchemy", "g56": "Ninja vs Shadow Corp", "g57": "OVO 2", "g58": "Pack a Bunchas",
+    "g59": "Pac-Man", "g60": "Particle Clicker", "g61": "Push Back", "g62": "Q1K3",
+    "g63": "Radius Rush", "g64": "Retro Haunt", "g65": "Roadblocks", "g66": "Shuttle Deck",
+    "g67": "Sleeping Beauty", "g68": "Snake", "g69": "Soccer Random", "g70": "Solitaire",
+    "g71": "Space Garden", "g72": "Space Huggers", "g73": "Space Defenders", "g74": "Stack",
+    "g75": "Stickman Hook", "g76": "Stickman Boost", "g77": "Stickman Climb", "g78": "Stickman Golf",
+    "g79": "Stickman Hook 2", "g80": "Subway Surfers", "g81": "Tetris", "g82": "Maze of Space Goblins",
+    "g83": "Tiny Fishing", "g84": "Tower Master", "g85": "Trimps", "g86": "Time Blaster 2",
+    "g87": "Time Blaster 3", "g88": "We Become What We Behold", "g89": "World's Hardest Game 2",
+    "g90": "XX142B2EXE", "g91": "Survival Royale", "g92": "Basket Random", "g93": "Basketbros.io",
+    "g94": "Boxing Random", "g95": "Merge Round Racers", "g96": "Eggy Car", "g97": "Grindcraft",
+    "g98": "Space Company", "g99": "Basketball Stars", "g100": "Moto X3M", "g101": "Bad Time Simulator (Undertale)", "g102": "Fun Time Simulator (Deltarune)",
+    "g103": "1v1.lol", "g104": "Friday Night Funkin", "g105": "Five Nights at Freddy's", "g106": "Tunnel Rush",
+    "g107": "Fireboy & Watergirl", "g108": "Rooftop Snipers 2", "g109": "Getaway Shootout", "g110": "Madalin Stunt Cars 2",
+    "g111": "Idle Breakout", "g112": "Vex 5", "g113": "Earn to Die", "g114": "Age of War",
+    "g115": "Cluster Rush", "g116": "Temple of Boom", "g117": "Hole.io", "g118": "Backrooms",
+    "g119": "Red Ball 4", "g120": "Plants vs Zombies", "g121": "Bloons TD", "g122": "Bitlife",
+    "g123": "Wordle", "g124": "Capybara Clicker", "g125": "Angry Birds", "g126": "Gunspin",
+    "g127": "Happy Wheels", "g128": "Cut the Rope", "g129": "SuperHot"
+};
+
+document.getElementById("game-title").innerText =
+    resID ? gameMap[resID] : "Unknown";
+
+var frame = document.getElementById("game-frame");
+if (resID) {
+    fetch(resID + "/index.html")
+        .then(function(r) { return r.text(); })
+        .then(function(html) {
+            var baseTag = "<base href=\"" + resID + "/\">";
+            var modified;
+            var headIdx = html.indexOf("<head");
+            if (headIdx > -1) {
+                var tagEnd = html.indexOf(">", headIdx) + 1;
+                modified = html.substring(0, tagEnd) + baseTag + html.substring(tagEnd);
+            } else {
+                modified = "<head>" + baseTag + "</head>" + html;
+            }
+            var doc = frame.contentDocument || frame.contentWindow.document;
+            doc.open();
+            doc.write(modified);
+            doc.close();
+        })
+        .catch(function() {
+            frame.src = resID + "/index.html";
+        });
+} else {
+    frame.src = "";
+}
