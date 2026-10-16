@@ -1,5 +1,5 @@
 // =========================
-// RESOURCE LIST (g1 → g129)
+// RESOURCE LIST (h1 → h129)
 // Each item may have a `logo` pointing to a bundled image (splash / icon /
 // title screen) inside its own folder. Items with a logo are sorted to the
 // top of the grid; items without one keep their text-only card below.
