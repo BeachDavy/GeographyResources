@@ -106,7 +106,30 @@
 </div>
 
 <!-- INSTALL BUTTON (PWA) -->
-<button id="install-btn">Install</button>
+<button id="install-btn">Install App</button>
+
+<!-- INSTALL INSTRUCTIONS MODAL -->
+<div id="install-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:10001;justify-content:center;align-items:center;">
+  <div style="background:#1b263b;border:2px solid #415a77;border-radius:14px;padding:30px;max-width:400px;margin:20px;text-align:center;color:#fff;">
+    <h3 style="margin-top:0;">Install for Offline Use</h3>
+    <p style="font-size:15px;line-height:1.6;opacity:0.9;">
+      <strong>iPhone/iPad (Safari):</strong><br>
+      Tap the Share button, then "Add to Home Screen".
+    </p>
+    <p style="font-size:15px;line-height:1.6;opacity:0.9;">
+      <strong>Android (Chrome):</strong><br>
+      Tap the menu (⋮), then "Add to Home screen" or "Install app".
+    </p>
+    <p style="font-size:15px;line-height:1.6;opacity:0.9;">
+      <strong>Desktop (Chrome/Edge):</strong><br>
+      Click the install icon (⊕) in the address bar.
+    </p>
+    <p style="font-size:13px;opacity:0.7;margin-top:16px;">
+      Once installed, everything works offline — no internet needed.
+    </p>
+    <button id="install-modal-close" style="margin-top:20px;padding:10px 28px;background:#415a77;color:#fff;border:2px solid #778da9;border-radius:10px;font-size:16px;font-weight:700;cursor:pointer;">Got it</button>
+  </div>
+</div>
 
 <script src="script.js"></script>
 
@@ -119,14 +142,23 @@
   window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
-    const btn = document.getElementById('install-btn');
-    if (btn) btn.style.display = 'block';
   });
   document.getElementById('install-btn').addEventListener('click', async () => {
-    if (!deferredPrompt) return;
-    deferredPrompt.prompt();
-    deferredPrompt = null;
-    document.getElementById('install-btn').style.display = 'none';
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      deferredPrompt = null;
+    } else {
+      // Browser didn't fire beforeinstallprompt (iframe, iOS, etc.)
+      document.getElementById('install-modal').style.display = 'flex';
+    }
+  });
+  document.getElementById('install-modal-close').addEventListener('click', () => {
+    document.getElementById('install-modal').style.display = 'none';
+  });
+  document.getElementById('install-modal').addEventListener('click', (e) => {
+    if (e.target.id === 'install-modal') {
+      document.getElementById('install-modal').style.display = 'none';
+    }
   });
 </script>
 
