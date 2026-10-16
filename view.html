@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Play Game</title>
+    <title>Geography Resources</title>
     <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0d1b2a">
+    <link rel="manifest" href="manifest.json">
 
     <!-- ADSENSE SCRIPT -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7243495410782424"
@@ -17,7 +20,7 @@
         <span id="game-title">Loading...</span>
     </div>
 
-    <!-- AD ABOVE GAME (play-top-ad) -->
+    <!-- AD ABOVE -->
     <ins class="adsbygoogle"
          style="display:block;margin:20px 0"
          data-ad-client="ca-pub-7243495410782424"
@@ -28,14 +31,14 @@
          (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
 
-    <!-- GAME FRAME -->
+    <!-- FRAME -->
     <div class="play-main">
         <div class="play-frame-wrap">
             <iframe id="game-frame"></iframe>
         </div>
     </div>
 
-    <!-- AD BELOW GAME (play-bottom-ad) -->
+    <!-- AD BELOW -->
     <ins class="adsbygoogle"
          style="display:block;margin:20px 0"
          data-ad-client="ca-pub-7243495410782424"
@@ -47,9 +50,9 @@
     </script>
 
 <script>
-    // Get game ID from URL
+    // Get resource ID from URL
     const params = new URLSearchParams(window.location.search);
-    const gameID = params.get("game");
+    const resID = params.get("r");
 
     // Map g# → display name
     const gameMap = {
@@ -90,15 +93,22 @@
 
     // Set title
     document.getElementById("game-title").innerText =
-        gameID ? gameMap[gameID] : "Unknown Game";
+        resID ? gameMap[resID] : "Unknown";
 
     // Load iframe
-    if (gameID) {
+    if (resID) {
         document.getElementById("game-frame").src =
-            `${gameID}/index.html`;
+            `${resID}/index.html`;
     } else {
         document.getElementById("game-frame").src = "";
     }
+</script>
+
+<!-- PWA SERVICE WORKER -->
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js');
+  }
 </script>
 
 </body>

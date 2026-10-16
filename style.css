@@ -285,3 +285,28 @@ footer {
   overflow: visible;       /* ad will still appear if Google serves one */
 }
 
+/* ============================
+   PWA INSTALL BUTTON
+   ============================ */
+
+#install-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 10000;
+  padding: 12px 24px;
+  background: #415a77;
+  color: #fff;
+  border: 2px solid #778da9;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  display: none;
+  transition: background 0.15s;
+}
+
+#install-btn:hover {
+  background: #778da9;
+}
+

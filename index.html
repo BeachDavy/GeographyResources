@@ -7,6 +7,9 @@
        crossorigin="anonymous"></script>
 
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0d1b2a">
+  <link rel="manifest" href="manifest.json">
   <title>Geography Resources</title>
   <link rel="stylesheet" href="style.css?v=2">
 
@@ -35,14 +38,14 @@
 
 <!-- TOP SEARCH BAR (very top) -->
 <div class="top-search-bar">
-  <input type="text" id="search" placeholder="Search games...">
+  <input type="text" id="search" placeholder="Search...">
 </div>
 
 <div class="layout">
 
   <!-- SIDEBAR -->
   <div class="side-menu">
-    <h3>Games</h3>
+    <h3>Resources</h3>
     <ul></ul>
 
     <!-- SIDEBAR AD -->
@@ -62,11 +65,11 @@
   <!-- MAIN CONTENT -->
   <div class="container">
     <h1>Geography Resources</h1>
-    <h2>Play HTML5 games that work at school</h2>
+    <h2>Interactive HTML5 resources</h2>
 
     <!-- BANNER (below heading) -->
     <div class="banner">
-      <img src="banner.png" alt="Unblocked Games banner">
+      <img src="banner.png" alt="Geography Resources banner">
     </div>
 
     <!-- TOP AD UNIT -->
@@ -83,7 +86,7 @@
     <div id="game-grid"></div>
 
     <footer>
-      © 2026 Geography Resources — All games are HTML5 and school-safe
+      © 2026 Geography Resources
     </footer>
   </div>
 
@@ -102,5 +105,30 @@
   </script>
 </div>
 
+<!-- INSTALL BUTTON (PWA) -->
+<button id="install-btn">Install</button>
+
 <script src="script.js"></script>
 
+<!-- PWA SERVICE WORKER -->
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js');
+  }
+  let deferredPrompt;
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    const btn = document.getElementById('install-btn');
+    if (btn) btn.style.display = 'block';
+  });
+  document.getElementById('install-btn').addEventListener('click', async () => {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    deferredPrompt = null;
+    document.getElementById('install-btn').style.display = 'none';
+  });
+</script>
+
+</body>
+</html>
