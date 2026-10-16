@@ -27,5 +27,5 @@ This is a pure static site — no external service credentials needed.
 
 ## Verification
 - `curl http://localhost:3000/` → 200, serves `index.html`
-- `curl http://localhost:3000/view.html` → 200
+- `curl http://localhost:3000/resource.html` → 200
 - Resource pages: `curl http://localhost:3000/h1/index.html` → 200

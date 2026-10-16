@@ -153,7 +153,7 @@ const sidebar = document.querySelector(".side-menu ul");
 
 items.forEach(item => {
     const li = document.createElement("li");
-    li.innerHTML = `<a href="view.html?r=${item.id}">${item.name}</a>`;
+    li.innerHTML = `<a href="resource.html?r=${item.id}">${item.name}</a>`;
     sidebar.appendChild(li);
 });
 
@@ -170,7 +170,7 @@ items.forEach(item => {
         ? `<img class="res-logo" src="${item.logo}" alt="${item.name}" onerror="this.style.display='none'">`
         : "";
     div.innerHTML = `
-        <a href="view.html?r=${item.id}">
+        <a href="resource.html?r=${item.id}">
             ${logoHtml}
             <p>${item.name}</p>
         </a>

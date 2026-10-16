@@ -1,32 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>View Resource</title>
+    <title>Geography Resources</title>
     <link rel="stylesheet" href="style.css?v=3">
-
-    <!-- ADSENSE SCRIPT -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7243495410782424"
-         crossorigin="anonymous"></script>
 </head>
 
 <body class="play-body">
 
     <!-- HEADER -->
     <div class="play-header">
-        <a class="back-btn" href="index.html">← Back</a>
+        <a class="back-btn" href="index.html">&larr; Back</a>
         <span id="res-title">Loading...</span>
     </div>
-
-    <!-- AD ABOVE CONTENT (play-top-ad) -->
-    <ins class="adsbygoogle"
-         style="display:block;margin:20px 0"
-         data-ad-client="ca-pub-7243495410782424"
-         data-ad-slot="2456894445"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
-    <script>
-         (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
 
     <!-- CONTENT FRAME -->
     <div class="play-main">
@@ -35,23 +20,12 @@
         </div>
     </div>
 
-    <!-- AD BELOW CONTENT (play-bottom-ad) -->
-    <ins class="adsbygoogle"
-         style="display:block;margin:20px 0"
-         data-ad-client="ca-pub-7243495410782424"
-         data-ad-slot="4013693707"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
-    <script>
-         (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-
 <script>
     // Get resource ID from URL
     const params = new URLSearchParams(window.location.search);
     const resID = params.get("r");
 
-    // Map g# → display name
+    // Map h# → display name
     const resMap = {
         "h1": "Space Dodge", "h2": "100ng", "h3": "adrenalinechallenge", "h4": "among-us",
         "h5": "awesometanks2", "h6": "cookie-clicker", "h7": "crossyroad", "h8": "cubefield",
