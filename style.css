@@ -269,23 +269,6 @@ footer {
   border: none;
 }
 /* ============================
-   STICKY AD (INVISIBLE UNTIL LOADED)
-   ============================ */
-
-#sticky-ad {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: transparent; /* no black bar */
-  padding: 0;
-  text-align: center;
-  z-index: 9999;
-  height: 0;               /* invisible until ad loads */
-  overflow: visible;       /* ad will still appear if Google serves one */
-}
-
-/* ============================
    PWA INSTALL BUTTON
    ============================ */
 

@@ -1,8 +1,8 @@
 // =========================
-// GAME LIST (g1 → g102)
-// Each game may have a `logo` pointing to a bundled image (splash / icon /
-// title screen) inside its own folder. Games with a logo are sorted to the
-// top of the grid; games without one keep their text-only card below.
+// RESOURCE LIST (g1 → g129)
+// Each item may have a `logo` pointing to a bundled image (splash / icon /
+// title screen) inside its own folder. Items with a logo are sorted to the
+// top of the grid; items without one keep their text-only card below.
 // =========================
 
 const games = [
@@ -149,6 +149,7 @@ games.sort((a, b) => {
 // SIDEBAR LIST
 // =========================
 
+
 const sidebar = document.querySelector(".side-menu ul");
 
 games.forEach(game => {
@@ -158,7 +159,7 @@ games.forEach(game => {
 });
 
 // =========================
-// GAME GRID
+// RESOURCE GRID
 // =========================
 
 const grid = document.getElementById("game-grid");
