@@ -2,6 +2,19 @@
 <html>
 <head>
     <title>Geography Resources</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Play free HTML5 unblocked games at school. No downloads, works on any browser.">
+    <link rel="canonical" href="https://geographywork.com/resource.html">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- Open Graph (updated dynamically per resource) -->
+    <meta property="og:title" id="og-title" content="Geography Resources">
+    <meta property="og:description" id="og-desc" content="Play free HTML5 unblocked games at school.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://geographywork.com/resource.html">
+    <meta property="og:image" content="https://geographywork.com/banner.png">
+
     <link rel="stylesheet" href="style.css?v=3">
 </head>
 
@@ -11,11 +24,12 @@
     <div class="play-header">
         <a class="back-btn" href="index.html">&larr; Back</a>
         <span id="res-title">Loading...</span>
+        <button id="fullscreen-btn" title="Fullscreen">⛶ Fullscreen</button>
     </div>
 
     <!-- CONTENT FRAME -->
     <div class="play-main">
-        <div class="play-frame-wrap">
+        <div class="play-frame-wrap" id="frame-wrap">
             <iframe id="res-frame"></iframe>
         </div>
     </div>
@@ -62,9 +76,15 @@
         "h127": "Happy Wheels", "h128": "Cut the Rope", "h129": "SuperHot"
     };
 
-    // Set title
-    document.getElementById("res-title").innerText =
-        resID ? resMap[resID] : "Unknown Resource";
+    // Set title + SEO meta dynamically
+    const resName = resID ? resMap[resID] : "Unknown Resource";
+    document.getElementById("res-title").innerText = resName;
+    document.title = "Play " + resName + " Unblocked — Geography Resources";
+
+    const desc = "Play " + resName + " unblocked at school for free. No downloads, works on any browser. HTML5 game.";
+    document.querySelector('meta[name="description"]').setAttribute("content", desc);
+    document.getElementById("og-title").setAttribute("content", "Play " + resName + " Unblocked");
+    document.getElementById("og-desc").setAttribute("content", desc);
 
     // Load iframe
     if (resID) {
@@ -73,6 +93,24 @@
     } else {
         document.getElementById("res-frame").src = "";
     }
+
+    // Fullscreen button
+    const fsBtn = document.getElementById("fullscreen-btn");
+    const frameWrap = document.getElementById("frame-wrap");
+
+    fsBtn.addEventListener("click", function () {
+        if (!document.fullscreenElement) {
+            frameWrap.requestFullscreen().catch(function (err) {
+                alert("Fullscreen not available: " + err.message);
+            });
+        } else {
+            document.exitFullscreen();
+        }
+    });
+
+    document.addEventListener("fullscreenchange", function () {
+        fsBtn.innerText = document.fullscreenElement ? "Exit Fullscreen" : "⛶ Fullscreen";
+    });
 </script>
 
 </body>
