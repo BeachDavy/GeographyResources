@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Geography Resources</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Play free HTML5 unblocked games at school. No downloads, works on any browser.">
+    <link rel="canonical" href="https://geographywork.com/resource.html">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- Open Graph (updated dynamically per resource) -->
+    <meta property="og:title" id="og-title" content="Geography Resources">
+    <meta property="og:description" id="og-desc" content="Play free HTML5 unblocked games at school.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://geographywork.com/resource.html">
+    <meta property="og:image" content="https://geographywork.com/banner.png">
+
+    <link rel="stylesheet" href="style.css?v=3">
+</head>
+
+<body class="play-body">
+
+    <!-- HEADER -->
+    <div class="play-header">
+        <a class="back-btn" href="index.html">&larr; Back</a>
+        <span id="res-title">Loading...</span>
+        <button id="fullscreen-btn" title="Fullscreen">⛶ Fullscreen</button>
+    </div>
+
+    <!-- CONTENT FRAME -->
+    <div class="play-main">
+        <div class="play-frame-wrap" id="frame-wrap">
+            <iframe id="res-frame"></iframe>
+        </div>
+    </div>
+
+<script>
+    // Get resource ID from URL
+    const params = new URLSearchParams(window.location.search);
+    const resID = params.get("r");
+
+    // Map h# → display name
+    const resMap = {
+        "h1": "Space Dodge", "h2": "100ng", "h3": "adrenalinechallenge", "h4": "among-us",
+        "h5": "awesometanks2", "h6": "cookie-clicker", "h7": "crossyroad", "h8": "cubefield",
+        "h9": "Dash Run 3D", "h10": "DogeMiner", "h11": "geodash", "h12": "minecraft-classic",
+        "h13": "paperio2", "h14": "Garden Defense", "h15": "precision-client", "h16": "retro-bowl",
+        "h17": "run-3", "h18": "runner", "h19": "sandboxels", "h20": "slitherio",
+        "h21": "slope", "h22": "Snowball Arena", "h23": "soccer-skills", "h24": "Stick Tactics",
+        "h25": "subway-surfers-ny", "h26": "The Clash",
+        "h27": "2048", "h28": "Ascii Space", "h29": "Asteroids", "h30": "Backcountry",
+        "h31": "Black Hole Square", "h32": "Bounce Back", "h33": "Breaklock", "h34": "Breakout",
+        "h35": "Captain Callisto", "h36": "Chess", "h37": "Chrome Incident", "h38": "Chrome Dino",
+        "h39": "Connect 3", "h40": "Counter Clicker", "h41": "Doodle Jump", "h42": "Drift",
+        "h43": "Drift Hunters", "h44": "Drive Mad", "h45": "Edge Not Found", "h46": "Rogue Glitch",
+        "h47": "Flappy 2048", "h48": "Flappy Bird", "h49": "Flappy Plane", "h50": "Flight Simulator",
+        "h51": "Google Snake", "h52": "Hextris", "h53": "Konnekt", "h54": "Lets Surf",
+        "h55": "Little Alchemy", "h56": "Ninja vs Shadow Corp", "h57": "OVO 2", "h58": "Pack a Bunchas",
+        "h59": "Pac-Man", "h60": "Particle Clicker", "h61": "Push Back", "h62": "Q1K3",
+        "h63": "Radius Rush", "h64": "Retro Haunt", "h65": "Roadblocks", "h66": "Shuttle Deck",
+        "h67": "Sleeping Beauty", "h68": "Snake", "h69": "Soccer Random", "h70": "Solitaire",
+        "h71": "Space Garden", "h72": "Space Huggers", "h73": "Space Defenders", "h74": "Stack",
+        "h75": "Stickman Hook", "h76": "Stickman Boost", "h77": "Stickman Climb", "h78": "Stickman Golf",
+        "h79": "Stickman Hook 2", "h80": "Subway Surfers", "h81": "Tetris", "h82": "Maze of Space Goblins",
+        "h83": "Tiny Fishing", "h84": "Tower Master", "h85": "Trimps", "h86": "Time Blaster 2",
+        "h87": "Time Blaster 3", "h88": "We Become What We Behold", "h89": "World's Hardest 2",
+        "h90": "XX142B2EXE", "h91": "Survival Royale", "h92": "Basket Random", "h93": "Basketbros.io",
+        "h94": "Boxing Random", "h95": "Merge Round Racers", "h96": "Eggy Car", "h97": "Grindcraft",
+        "h98": "Space Company", "h99": "Basketball Stars", "h100": "Moto X3M", "h101": "Bad Time Simulator (Undertale)", "h102": "Fun Time Simulator (Deltarune)",
+        "h103": "1v1.lol", "h104": "Friday Night Funkin", "h105": "Five Nights at Freddy's", "h106": "Tunnel Rush",
+        "h107": "Fireboy & Watergirl", "h108": "Rooftop Snipers 2", "h109": "Getaway Shootout", "h110": "Madalin Stunt Cars 2",
+        "h111": "Idle Breakout", "h112": "Vex 5", "h113": "Earn to Die", "h114": "Age of War",
+        "h115": "Cluster Rush", "h116": "Temple of Boom", "h117": "Hole.io", "h118": "Backrooms",
+        "h119": "Red Ball 4", "h120": "Plants vs Zombies", "h121": "Bloons TD", "h122": "Bitlife",
+        "h123": "Wordle", "h124": "Capybara Clicker", "h125": "Angry Birds", "h126": "Gunspin",
+        "h127": "Happy Wheels", "h128": "Cut the Rope", "h129": "SuperHot"
+    };
+
+    // Set title + SEO meta dynamically
+    const resName = resID ? resMap[resID] : "Unknown Resource";
+    document.getElementById("res-title").innerText = resName;
+    document.title = "Play " + resName + " Unblocked — Geography Resources";
+
+    const desc = "Play " + resName + " unblocked at school for free. No downloads, works on any browser. HTML5 game.";
+    document.querySelector('meta[name="description"]').setAttribute("content", desc);
+    document.getElementById("og-title").setAttribute("content", "Play " + resName + " Unblocked");
+    document.getElementById("og-desc").setAttribute("content", desc);
+
+    // Load iframe
+    if (resID) {
+        document.getElementById("res-frame").src =
+            `${resID}/index.html`;
+    } else {
+        document.getElementById("res-frame").src = "";
+    }
+
+    // Fullscreen button
+    const fsBtn = document.getElementById("fullscreen-btn");
+    const frameWrap = document.getElementById("frame-wrap");
+
+    fsBtn.addEventListener("click", function () {
+        if (!document.fullscreenElement) {
+            frameWrap.requestFullscreen().catch(function (err) {
+                alert("Fullscreen not available: " + err.message);
+            });
+        } else {
+            document.exitFullscreen();
+        }
+    });
+
+    document.addEventListener("fullscreenchange", function () {
+        fsBtn.innerText = document.fullscreenElement ? "Exit Fullscreen" : "⛶ Fullscreen";
+    });
+</script>
+
+</body>
+</html>
