@@ -1,49 +1,145 @@
-<!-- rebuild -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Geography Resources</title>
-  <link rel="stylesheet" href="style.css?v=2">
-
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Geography Resources — Interactive Learning</title>
+  <link rel="stylesheet" href="style.css?v=3">
+  <style>
+    /* Cover page styles */
+    .cover-body {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    .cover-hero {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    .cover-hero h1 {
+      font-size: 38px;
+      margin-bottom: 10px;
+      cursor: default;
+      user-select: none;
+    }
+    .cover-hero p {
+      font-size: 18px;
+      opacity: 0.8;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .modules {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+    .module-card {
+      background: #1b263b;
+      border: 3px solid #415a77;
+      border-radius: 14px;
+      padding: 24px;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .module-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0px 6px 15px rgba(0,0,0,0.4);
+    }
+    .module-card h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+      color: #e0e0e0;
+    }
+    .module-card p {
+      margin: 0;
+      font-size: 15px;
+      opacity: 0.7;
+      line-height: 1.5;
+    }
+    .module-icon {
+      font-size: 32px;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .cover-footer {
+      text-align: center;
+      margin-top: 60px;
+      opacity: 0.5;
+      font-size: 14px;
+    }
+    /* Hidden access trigger — the title text */
+    #cover-title {
+      cursor: default;
+      user-select: none;
+      transition: opacity 0.1s;
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- TOP SEARCH BAR (very top) -->
-<div class="top-search-bar">
-  <input type="text" id="search" placeholder="Search games...">
-</div>
+<div class="cover-body">
 
-<div class="layout">
-
-  <!-- SIDEBAR -->
-  <div class="side-menu">
-    <h3>Games</h3>
-    <ul></ul>
-
-
+  <div class="cover-hero">
+    <h1 id="cover-title">Geography Resources</h1>
+    <p>A collection of interactive learning materials covering physical geography, human geography, and environmental science for KS3–KS5 students.</p>
   </div>
 
-  <!-- MAIN CONTENT -->
-  <div class="container">
-    <h1>Geography Resources</h1>
-    <h2>Play HTML5 games that work at school</h2>
-
-    <!-- BANNER (below heading) -->
-    <div class="banner">
-      <img src="banner.png" alt="Unblocked Games banner">
+  <div class="modules">
+    <div class="module-card">
+      <span class="module-icon">🌍</span>
+      <h3>Physical Geography</h3>
+      <p>Explore plate tectonics, weather systems, and natural landforms through interactive diagrams and quizzes.</p>
     </div>
+    <div class="module-card">
+      <span class="module-icon">🏙️</span>
+      <h3>Human Geography</h3>
+      <p>Study population dynamics, urbanisation, and economic development across global regions.</p>
+    </div>
+    <div class="module-card">
+      <span class="module-icon">🌿</span>
+      <h3>Environmental Science</h3>
+      <p>Learn about ecosystems, climate change, and sustainability through case studies and activities.</p>
+    </div>
+    <div class="module-card">
+      <span class="module-icon">🗺️</span>
+      <h3>Map Skills</h3>
+      <p>Practise reading OS maps, grid references, and contour interpretation with guided exercises.</p>
+    </div>
+    <div class="module-card">
+      <span class="module-icon">📊</span>
+      <h3>Data & Fieldwork</h3>
+      <p>Develop fieldwork skills and learn to present geographical data using graphs and GIS tools.</p>
+    </div>
+    <div class="module-card">
+      <span class="module-icon">📖</span>
+      <h3>Exam Revision</h3>
+      <p>Access past paper questions, mark schemes, and topic summaries for GCSE and A-Level preparation.</p>
+    </div>
+  </div>
 
-    <div id="game-grid"></div>
-
-    <footer>
-      © 2026 Geography Resources — All games are HTML5 and school-safe
-    </footer>
+  <div class="cover-footer">
+    © 2026 Geography Resources — Supporting geography education
   </div>
 
 </div>
 
-<script src="script.js"></script>
+<script>
+  // Hidden access: click the title 3 times quickly to enter the resources hub
+  let clickCount = 0;
+  let clickTimer = null;
+  const title = document.getElementById('cover-title');
 
+  title.addEventListener('click', function () {
+    clickCount++;
+    clearTimeout(clickTimer);
+    clickTimer = setTimeout(function () { clickCount = 0; }, 800);
+
+    if (clickCount >= 3) {
+      window.location.href = 'home.html';
+    }
+  });
+</script>
+
+</body>
+</html>
